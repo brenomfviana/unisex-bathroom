@@ -10,17 +10,15 @@ import person.Person;
 /**
  * This class respresents the bathroom.
  *
- * @author Breno Viana
- * @version 25/05/2017
+ * @author Patricia 
+ * @version 27/05/2017
  */
 public class Bathroom {
 
-    // Time of use available (seconds)
-    private static int TIME_OF_USE_AVAILABLE = 10;
-
     // Singleton
     private static Bathroom instance = new Bathroom(10);
-
+    //Using sex
+    private String currentSex;
     // Bathroom capacity
     private final int capacity;
     // Users list
@@ -33,7 +31,7 @@ public class Bathroom {
      */
     public Bathroom(int capacity) {
         this.capacity = capacity;
-        
+        this.currentSex = "";
         users = new ArrayList<>();
     }
 
@@ -52,6 +50,10 @@ public class Bathroom {
      * @param person A person
      */
     public void addUser(Person person) {
+        //if it is the first person to enter the bathroom
+        if(this.isEmpty()){
+            currentSex = person.getsex();
+        }
         // Check if the bathroom isn't full
         if (!this.isFull() && !this.users.contains(person)){
             
@@ -77,9 +79,10 @@ public class Bathroom {
             this.users.remove(person);
             System.out.println(person.getName() + " left the bathroom");            
             
-            // Check if the car is empty
+            // Check if the bathroom is empty
             if (this.isEmpty()) {
                 System.out.println("The bathroon is empty");
+                this.currentSex = "";
             }
         }
     }
@@ -91,7 +94,11 @@ public class Bathroom {
     public boolean isFull() {
         return this.capacity == this.users.size();
     }
-
+    
+    public String getCurrentSex(){
+        return currentSex;
+    }
+    
     /**
      * .
      * @return
@@ -99,4 +106,17 @@ public class Bathroom {
     public boolean isEmpty() {
         return this.users.isEmpty();
     }
+    
+    public void run(){
+        if(this.isEmpty()){
+            //recebe pessoa
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Bathroom{" + "currentSex=" + currentSex + ", capacity=" + capacity + ", numberOfUsers=" + this.users.size() + '}';
+    }
+    
+    
 }
