@@ -30,7 +30,7 @@ public class Main {
         // Person list
         List<Person> users = new ArrayList<>();
         // Creates people
-        for (int i = 0; i < ((new Random()).nextInt(3) + 5); i++) {
+        for (int i = 0; i < ((new Random()).nextInt(10) + 15); i++) {
             // Creates man and woman
             if (new Random().nextInt(2) == 0) {
                 // Creates man

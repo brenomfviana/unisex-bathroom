@@ -19,7 +19,7 @@ import unisexbathroomsemaphore.person.Person;
 public class Bathroom {
 
     // Bathroom capacity
-    private static final int CAPACITY = 10;
+    private static final int CAPACITY = 5;
 
     // Singleton
     private static Bathroom instance = new Bathroom(CAPACITY);
