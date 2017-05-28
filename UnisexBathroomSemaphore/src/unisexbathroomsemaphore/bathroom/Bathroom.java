@@ -3,14 +3,17 @@
  */
 package unisexbathroomsemaphore.bathroom;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import unisexbathroomsemaphore.person.Person;
 
 /**
  * This class respresents the bathroom.
  *
- * @author Patricia
+ * @author Breno & Patricia
  * @version 27/05/2017
  */
 public class Bathroom {
@@ -25,7 +28,12 @@ public class Bathroom {
     // Bathroom capacity
     private final int capacity;
     // Users list
-    private List<Person> users;
+    private LinkedHashSet<Person> users;
+
+    // Semaphore
+    private Semaphore semaphore;
+    private Semaphore leftMutex;
+    private Semaphore enterMutex;
 
     /**
      * Constructor.
@@ -35,7 +43,10 @@ public class Bathroom {
     public Bathroom(int capacity) {
         this.capacity = capacity;
         this.currentSex = "";
-        this.users = new ArrayList<>();
+        this.users = new LinkedHashSet<>();
+        this.semaphore = new Semaphore(this.capacity, true);
+        this.leftMutex = new Semaphore(1, true);
+        this.enterMutex = new Semaphore(1, true);
     }
 
     /**
@@ -53,17 +64,30 @@ public class Bathroom {
      * @param person A person
      */
     public void addUser(Person person) {
+        try {
+            this.semaphore.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Bathroom.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
         //if it is the first person to enter the bathroom
         if (this.isEmpty()) {
-            currentSex = person.getsex();
+            this.currentSex = person.getSex();
         }
         // Check if the bathroom isn't full
-        if (!this.isFull() && !this.users.contains(person)) {
-
+        if (!this.isFull() && !this.users.contains(person)
+                && getCurrentSex().equals(person.getSex())) {
+            try {
+                this.enterMutex.acquire();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Bathroom.class.getName())
+                        .log(Level.SEVERE, null, ex);
+            }
             // Add the person
-            this.users.add(person);
-            System.out.println(person.getName() + " entered the bathroom");
-
+            if (this.users.add(person)) {
+                System.out.println(person.getName() + " entered the bathroom");
+            }
+            this.enterMutex.release();
             // Check if the bathroom is full
             if (this.isFull()) {
                 System.out.println("The bathroom is full");
@@ -77,11 +101,19 @@ public class Bathroom {
      * @param person A person
      */
     public void removeUser(Person person) {
+        this.semaphore.release();
         // Check if the bathroom in't empty
         if (!this.isEmpty()) {
-            this.users.remove(person);
-            System.out.println(person.getName() + " left the bathroom");
-
+            try {
+                this.leftMutex.acquire();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Bathroom.class.getName())
+                        .log(Level.SEVERE, null, ex);
+            }
+            if (this.users.remove(person)) {
+                System.out.println(person.getName() + " left the bathroom");
+            }
+            this.leftMutex.release();
             // Check if the bathroom is empty
             if (this.isEmpty()) {
                 System.out.println("The bathroon is empty");
@@ -91,34 +123,48 @@ public class Bathroom {
     }
 
     /**
-     * .
-     * @return
+     * Get true if the selected person is in the bathroom and false otherwise.
+     *
+     * @param person A person
+     * @return True if the selected person is in the bathroom and false
+     * otherwise
+     */
+    public boolean isInTheBathroom(Person person) {
+        return this.users.contains(person);
+    }
+
+    /**
+     * Get true if the bathroom is full and false otherwise.
+     *
+     * @return True if the bathroom is full and false otherwise
      */
     public boolean isFull() {
         return this.capacity == this.users.size();
     }
 
-    public String getCurrentSex() {
-        return currentSex;
-    }
-
     /**
-     * .
-     * @return
+     * Get true if the bathroom is full and false otherwise.
+     *
+     * @return True if the bathroom is full and false otherwise
      */
     public boolean isEmpty() {
         return this.users.isEmpty();
     }
 
-    public void run() {
-        if (this.isEmpty()) {
-            //recebe pessoa
-        }
+    /**
+     * Get current sex.
+     *
+     * @return Current sex
+     */
+    public String getCurrentSex() {
+        return this.currentSex;
     }
 
     @Override
     public String toString() {
-        return "Bathroom{" + "currentSex=" + currentSex + ", capacity=" + capacity + ", numberOfUsers=" + this.users.size() + '}';
+        return "Bathroom{" + "currentSex = " + this.currentSex
+                + ", capacity = " + this.capacity
+                + ", numberOfUsers = " + this.users.size() + '}';
     }
 
 }

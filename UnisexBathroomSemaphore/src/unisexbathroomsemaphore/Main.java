@@ -6,6 +6,8 @@ package unisexbathroomsemaphore;
 import java.util.List;
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import unisexbathroomsemaphore.person.Man;
 import unisexbathroomsemaphore.person.Woman;
 import unisexbathroomsemaphore.person.Person;
@@ -41,6 +43,14 @@ public class Main {
         // Stats persons
         users.stream().map((Person) -> new Thread(Person)).forEach((t) -> {
             t.start();
+        });
+        // 
+        users.stream().map((Person) -> new Thread(Person)).forEach((t) -> {
+            try {
+                t.join();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
     }
 }
