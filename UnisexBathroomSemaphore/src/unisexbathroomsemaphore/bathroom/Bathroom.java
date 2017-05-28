@@ -1,22 +1,25 @@
 /*
  * GNU License.
  */
-package unisexbathroomsemaphore;
+package unisexbathroomsemaphore.bathroom;
 
-import java.util.ArrayList;
 import java.util.List;
-import person.Person;
+import java.util.ArrayList;
+import unisexbathroomsemaphore.person.Person;
 
 /**
  * This class respresents the bathroom.
  *
- * @author Patricia 
+ * @author Patricia
  * @version 27/05/2017
  */
 public class Bathroom {
 
+    // Bathroom capacity
+    private static final int CAPACITY = 10;
+
     // Singleton
-    private static Bathroom instance = new Bathroom(10);
+    private static Bathroom instance = new Bathroom(CAPACITY);
     //Using sex
     private String currentSex;
     // Bathroom capacity
@@ -32,7 +35,7 @@ public class Bathroom {
     public Bathroom(int capacity) {
         this.capacity = capacity;
         this.currentSex = "";
-        users = new ArrayList<>();
+        this.users = new ArrayList<>();
     }
 
     /**
@@ -40,7 +43,7 @@ public class Bathroom {
      *
      * @return Instance of bathroom
      */
-    public Bathroom getInstance() {
+    public static Bathroom getInstance() {
         return instance;
     }
 
@@ -51,16 +54,16 @@ public class Bathroom {
      */
     public void addUser(Person person) {
         //if it is the first person to enter the bathroom
-        if(this.isEmpty()){
+        if (this.isEmpty()) {
             currentSex = person.getsex();
         }
         // Check if the bathroom isn't full
-        if (!this.isFull() && !this.users.contains(person)){
-            
+        if (!this.isFull() && !this.users.contains(person)) {
+
             // Add the person
-            this.users.add(person);            
+            this.users.add(person);
             System.out.println(person.getName() + " entered the bathroom");
-            
+
             // Check if the bathroom is full
             if (this.isFull()) {
                 System.out.println("The bathroom is full");
@@ -77,8 +80,8 @@ public class Bathroom {
         // Check if the bathroom in't empty
         if (!this.isEmpty()) {
             this.users.remove(person);
-            System.out.println(person.getName() + " left the bathroom");            
-            
+            System.out.println(person.getName() + " left the bathroom");
+
             // Check if the bathroom is empty
             if (this.isEmpty()) {
                 System.out.println("The bathroon is empty");
@@ -94,11 +97,11 @@ public class Bathroom {
     public boolean isFull() {
         return this.capacity == this.users.size();
     }
-    
-    public String getCurrentSex(){
+
+    public String getCurrentSex() {
         return currentSex;
     }
-    
+
     /**
      * .
      * @return
@@ -106,9 +109,9 @@ public class Bathroom {
     public boolean isEmpty() {
         return this.users.isEmpty();
     }
-    
-    public void run(){
-        if(this.isEmpty()){
+
+    public void run() {
+        if (this.isEmpty()) {
             //recebe pessoa
         }
     }
@@ -117,6 +120,5 @@ public class Bathroom {
     public String toString() {
         return "Bathroom{" + "currentSex=" + currentSex + ", capacity=" + capacity + ", numberOfUsers=" + this.users.size() + '}';
     }
-    
-    
+
 }
