@@ -3,18 +3,18 @@
  */
 package unisexbathroomsemaphore.bathroom;
 
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.concurrent.Semaphore;
+import unisexbathroomsemaphore.person.Sex;
 import unisexbathroomsemaphore.person.Person;
 
 /**
  * This class respresents the bathroom.
  *
  * @author Breno & Patricia
- * @version 27/05/2017
+ * @version 29/05/2017
  */
 public class Bathroom {
 
@@ -24,7 +24,7 @@ public class Bathroom {
     // Singleton
     private static Bathroom instance = new Bathroom(CAPACITY);
     //Using sex
-    private String currentSex;
+    private Sex currentSex;
     // Bathroom capacity
     private final int capacity;
     // Users list
@@ -42,7 +42,7 @@ public class Bathroom {
      */
     public Bathroom(int capacity) {
         this.capacity = capacity;
-        this.currentSex = "";
+        this.currentSex = Sex.NONE;
         this.users = new LinkedHashSet<>();
         this.semaphore = new Semaphore(this.capacity, true);
         this.leftMutex = new Semaphore(1, true);
@@ -117,7 +117,7 @@ public class Bathroom {
             // Check if the bathroom is empty
             if (this.isEmpty()) {
                 System.out.println("The bathroon is empty");
-                this.currentSex = "";
+                this.currentSex = Sex.NONE;
             }
         }
     }
@@ -156,7 +156,7 @@ public class Bathroom {
      *
      * @return Current sex
      */
-    public String getCurrentSex() {
+    public Sex getCurrentSex() {
         return this.currentSex;
     }
 

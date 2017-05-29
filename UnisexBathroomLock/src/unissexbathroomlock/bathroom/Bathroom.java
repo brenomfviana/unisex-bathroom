@@ -1,13 +1,11 @@
 /*
  * GNU License.
  */
-package unissexBathroom.bathroom;
+package unissexbathroomlock.bathroom;
 
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.LinkedHashSet;
-import unissexBathroom.person.Person;
+import unissexbathroomlock.person.Sex;
+import unissexbathroomlock.person.Person;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -15,7 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * This class respresents the bathroom.
  *
  * @author Breno & Patricia
- * @version 27/05/2017
+ * @version 29/05/2017
  */
 public class Bathroom {
 
@@ -25,7 +23,7 @@ public class Bathroom {
     // Singleton
     private static Bathroom instance = new Bathroom(CAPACITY);
     //Using sex
-    private String currentSex;
+    private Sex currentSex;
     // Bathroom capacity
     private final int capacity;
     // Users list
@@ -40,7 +38,7 @@ public class Bathroom {
      */
     public Bathroom(int capacity) {
         this.capacity = capacity;
-        this.currentSex = "";
+        this.currentSex = Sex.NONE;
         this.users = new LinkedHashSet<>();
     }
 
@@ -60,7 +58,7 @@ public class Bathroom {
      */
     public void addUser(Person person) {
         this.lock.lock();
-        try {        
+        try {
             //if it is the first person to enter the bathroom
             if (this.isEmpty()) {
                 this.currentSex = person.getSex();
@@ -89,7 +87,7 @@ public class Bathroom {
      */
     public void removeUser(Person person) {
         this.lock.lock();
-        try {   
+        try {
             // Check if the bathroom in't empty
             if (!this.isEmpty()) {
                 if (this.users.remove(person)) {
@@ -98,7 +96,7 @@ public class Bathroom {
                 // Check if the bathroom is empty
                 if (this.isEmpty()) {
                     System.out.println("The bathroon is empty");
-                    this.currentSex = "";
+                    this.currentSex = Sex.NONE;
                 }
             }
         } finally {
@@ -140,7 +138,7 @@ public class Bathroom {
      *
      * @return Current sex
      */
-    public String getCurrentSex() {
+    public Sex getCurrentSex() {
         return this.currentSex;
     }
 
@@ -150,5 +148,4 @@ public class Bathroom {
                 + ", capacity = " + this.capacity
                 + ", numberOfUsers = " + this.users.size() + '}';
     }
-
 }

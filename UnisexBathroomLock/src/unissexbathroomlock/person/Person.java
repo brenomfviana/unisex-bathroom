@@ -1,26 +1,26 @@
 /*
  * GNU License.
  */
-package unissexBathroom.person;
+package unissexbathroomlock.person;
 
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.concurrent.TimeUnit;
-import unissexBathroom.bathroom.Bathroom;
+import unissexbathroomlock.bathroom.Bathroom;
 
 /**
  * This class respresents a person.
  *
  * @author Breno & Patricia
- * @version 27/05/2017
+ * @version 29/05/2017
  */
 public class Person implements Runnable {
 
     // Person name
     private final String name;
     // Person sex
-    private final String sex;
+    private final Sex sex;
     // Bathroom
     private final Bathroom bathroom;
     // Can leave
@@ -35,7 +35,7 @@ public class Person implements Runnable {
      * @param sex Person sex
      * @param bathroom Bathroom available to use
      */
-    public Person(String name, String sex, Bathroom bathroom) {
+    public Person(String name, Sex sex, Bathroom bathroom) {
         this.name = name;
         this.sex = sex;
         this.bathroom = bathroom;
@@ -88,7 +88,7 @@ public class Person implements Runnable {
      *
      * @return Person sex
      */
-    public String getSex() {
+    public Sex getSex() {
         return this.sex;
     }
 
@@ -104,7 +104,7 @@ public class Person implements Runnable {
             }
             // If they want to use
             if ((this.bathroom.getCurrentSex().equals(this.getSex())
-                    || this.bathroom.getCurrentSex().equals(""))
+                    || this.bathroom.getCurrentSex().equals(Sex.NONE))
                     && !this.bathroom.isFull()
                     && !this.bathroom.isInTheBathroom(this)) {
                 this.useBathroom();

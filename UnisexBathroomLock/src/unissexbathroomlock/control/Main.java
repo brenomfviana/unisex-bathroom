@@ -1,23 +1,22 @@
 /*
  * GNU License.
  */
-package unissexBathroom.control;
+package unissexbathroomlock.control;
 
 import java.util.List;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import unissexBathroom.person.Man;
-import unissexBathroom.person.Woman;
-import unissexBathroom.person.Person;
-import unissexBathroom.bathroom.Bathroom;
+import unissexbathroomlock.person.Sex;
+import unissexbathroomlock.person.Person;
+import unissexbathroomlock.bathroom.Bathroom;
 
 /**
  * This is the main class of Unisex Bathroom.
  *
  * @author Breno & Patricia
- * @version 27/05/2017
+ * @version 29/05/2017
  */
 public class Main {
 
@@ -34,10 +33,10 @@ public class Main {
             // Creates man and woman
             if (new Random().nextInt(2) == 0) {
                 // Creates man
-                users.add(new Man(("João" + i), bathroom));
+                users.add(new Person(("João" + i), Sex.MAN, bathroom));
             } else {
                 // Creates woman
-                users.add(new Woman(("Maria" + i), bathroom));
+                users.add(new Person(("Maria" + i), Sex.WOMAN, bathroom));
             }
         }
         // Stats persons
