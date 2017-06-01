@@ -14,15 +14,18 @@ Design and implement a concurrent solution to the problem. The program should sh
 
 ## Compiling and Running
 
-We usually use an IDE (like NetBeans or Eclipse) to compile and build the program, but if you can use the following commands.
+We usually use an IDE (like NetBeans or Eclipse) to compile and build the program, but if you want to compile via terminal use the following commands.
 
 ### Unisex Bathroom Lock
+
+Open the project folder:
+
+    cd UnisexBathroomLock
 
 #### How to compile
 
 To compile enter the following command:
 
-    cd UnisexBathroomLock
     javac src/unissexbathroomlock/control/*.java src/unissexbathroomlock/bathroom/*.java src/unissexbathroomlock/person/*.java
 
 #### How to generate executable
@@ -37,11 +40,14 @@ To generate the jar executable run the following command:
 
 ### Unisex Bathroom Semaphore
 
+Open the project folder:
+
+    cd UnisexBathroomSemaphore
+
 #### How to compile
 
 To compile enter the following command:
 
-    cd UnisexBathroomSemaphore
     javac src/unissexbathroomsemaphore/control/*.java src/unissexbathroomsemaphore/bathroom/*.java src/unissexbathroomsemaphore/person/*.java
 
 #### How to generate executable
