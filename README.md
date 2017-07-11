@@ -63,4 +63,4 @@ To generate the jar executable run the following command:
 ## Members
 
 - Breno Maurício de Freitas Viana ([GitHub](https://github.com/brenov))
-- Patrícia Cruz Pontes ([GitHub](https://github.com/Pekorishia))
+- Patrícia Pontes Cruz ([GitHub](https://github.com/Pekorishia))
