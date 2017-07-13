@@ -20,45 +20,61 @@ We usually use an IDE (like NetBeans or Eclipse) to compile and build the progra
 
 Open the project folder:
 
-    cd UnisexBathroomLock
+```bash
+cd UnisexBathroomLock
+```
 
 #### How to compile
 
 To compile enter the following command:
 
-    javac src/unissexbathroomlock/control/*.java src/unissexbathroomlock/bathroom/*.java src/unissexbathroomlock/person/*.java
+```bash
+javac src/unissexbathroomlock/control/*.java src/unissexbathroomlock/bathroom/*.java src/unissexbathroomlock/person/*.java
+```
 
 #### How to generate executable
 
 To generate the jar executable run the following command:
 
-    jar cfm UnisexBathroomLock.jar manifest.mf src/unissexbathroomlock/control/*.class src/unissexbathroomlock/bathroom/*.java src/unissexbathroomlock/person/*.class
+```bash
+jar cfm UnisexBathroomLock.jar manifest.mf src/unissexbathroomlock/control/*.class src/unissexbathroomlock/bathroom/*.java src/unissexbathroomlock/person/*.class
+```
 
 #### How to run
 
-    java -jar UnisexBathroomLock.jar
+```bash
+java -jar UnisexBathroomLock.jar
+```
 
 ### Unisex Bathroom Semaphore
 
 Open the project folder:
 
-    cd UnisexBathroomSemaphore
+```bash
+cd UnisexBathroomSemaphore
+```
 
 #### How to compile
 
 To compile enter the following command:
 
-    javac src/unissexbathroomsemaphore/control/*.java src/unissexbathroomsemaphore/bathroom/*.java src/unissexbathroomsemaphore/person/*.java
+```bash
+javac src/unissexbathroomsemaphore/control/*.java src/unissexbathroomsemaphore/bathroom/*.java src/unissexbathroomsemaphore/person/*.java
+```
 
 #### How to generate executable
 
 To generate the jar executable run the following command:
 
-    jar cfm UnisexBathroomSemaphore.jar manifest.mf src/unissexbathroomsemaphore/control/*.class src/unissexbathroomsemaphore/bathroom/*.java src/unissexbathroomsemaphore/person/*.class
+```bash
+jar cfm UnisexBathroomSemaphore.jar manifest.mf src/unissexbathroomsemaphore/control/*.class src/unissexbathroomsemaphore/bathroom/*.java src/unissexbathroomsemaphore/person/*.class
+```
 
 #### How to run
 
-    java -jar UnisexBathroomSemaphore.jar
+```bash
+java -jar UnisexBathroomSemaphore.jar
+```
 
 ## Team
 
