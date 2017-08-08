@@ -1,7 +1,7 @@
 /*
  * GNU License.
  */
-package unisexbathroomsemaphore;
+package unisexbathroomsemaphore.control;
 
 import java.util.List;
 import java.util.Random;
@@ -43,7 +43,7 @@ public class Main {
         users.stream().map((Person) -> new Thread(Person)).forEach((t) -> {
             t.start();
         });
-        // 
+        //
         users.stream().map((Person) -> new Thread(Person)).forEach((t) -> {
             try {
                 t.join();

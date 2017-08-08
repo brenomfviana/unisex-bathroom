@@ -16,6 +16,10 @@ Design and implement a concurrent solution to the problem. The program should sh
 
 We usually use an IDE (like NetBeans or Eclipse) to compile and build the program, but if you want to compile via terminal use the following commands.
 
+### Dependencies
+
+- Java 8.0 or greater
+
 ### Unisex Bathroom Lock
 
 Open the project folder:
@@ -26,18 +30,21 @@ cd UnisexBathroomLock
 
 #### How to compile
 
-To compile enter the following command:
+Run the following commands:
 
 ```bash
-javac src/unissexbathroomlock/control/*.java src/unissexbathroomlock/bathroom/*.java src/unissexbathroomlock/person/*.java
+./make.sh
 ```
 
-#### How to generate executable
+##### ```make.sh``` content
 
-To generate the jar executable run the following command:
-
-```bash
-jar cfm UnisexBathroomLock.jar manifest.mf src/unissexbathroomlock/control/*.class src/unissexbathroomlock/bathroom/*.java src/unissexbathroomlock/person/*.class
+```sh
+#!/bin/bash
+cd src
+# Compile
+javac unissexbathroomlock/control/*.java unissexbathroomlock/bathroom/*.java unissexbathroomlock/person/*.java
+# Generate jar
+jar cfm ../UnisexBathroomLock.jar ../manifest.mf unissexbathroomlock/control/*.class unissexbathroomlock/bathroom/*.class unissexbathroomlock/person/*.class
 ```
 
 #### How to run
@@ -56,18 +63,21 @@ cd UnisexBathroomSemaphore
 
 #### How to compile
 
-To compile enter the following command:
+Run the following commands:
 
 ```bash
-javac src/unissexbathroomsemaphore/control/*.java src/unissexbathroomsemaphore/bathroom/*.java src/unissexbathroomsemaphore/person/*.java
+./make.sh
 ```
 
-#### How to generate executable
+##### ```make.sh``` content
 
-To generate the jar executable run the following command:
-
-```bash
-jar cfm UnisexBathroomSemaphore.jar manifest.mf src/unissexbathroomsemaphore/control/*.class src/unissexbathroomsemaphore/bathroom/*.java src/unissexbathroomsemaphore/person/*.class
+```sh
+#!/bin/bash
+cd src
+# Compile
+javac unisexbathroomsemaphore/control/*.java unisexbathroomsemaphore/bathroom/*.java unisexbathroomsemaphore/person/*.java
+# Generate jar
+jar cfm ../UnisexBathroomSemaphore.jar ../manifest.mf unisexbathroomsemaphore/control/*.class unisexbathroomsemaphore/bathroom/*.class unisexbathroomsemaphore/person/*.class
 ```
 
 #### How to run
