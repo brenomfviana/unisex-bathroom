@@ -1,10 +1,7 @@
+*.jar
 *.xml
 *.properties
 *.class
 *.form
 */build/
 */dist/
-/JavaApplication6/nbproject/private/
-/UnisexBathroomSemaphore/unissex-bathroom/nbproject/private/
-/UnisexBathroomSemaphore/unissex-bathroom/build/
-/UnisexBathroomLock/nbproject/private/
