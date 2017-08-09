@@ -2,15 +2,15 @@
 
 ## Description
 
-This is a work of the Concurrent Programming course in which two solutions were implemented using different methods of synchronization.
+This is a work from the Concurrent Programming course in which two solutions were implemented using different methods of synchronization. The methods used to solve the problem were explicit locks and semaphores.
 
 ## Problem
 
 #### Unisex Bathroom
 
-An office has a bathroom that can be used by both men and women, but not both at the same time. If a man is in the bathroom, other men may enter, but any women wishing to use the bathroom should expect it to be empty. If a woman is in the bathroom, other women may enter, but any men wishing to use the bathroom should expect it to be empty. Each person (man or woman) can spend time using the bathroom.
+An office has a bathroom that can be used by both men and women, but not both at the same time. If a man is in the bathroom, other men may enter, but any women wishing to use the bathroom should wait for it to be empty. If a woman is in the bathroom, other women may enter, but any men wishing to use the bathroom should wait it to be empty. Each person (man or woman) will spend some time using the bathroom.
 
-Design and implement a concurrent solution to the problem. The program should show the entrance and exit of a person (man or woman) from the bathroom as well as how many people (men or women) are in the bathroom at the moment. Because it is a space of relatively small size, the bathroom has a limiting capacity of persons C (provided as input via the command line or prefixed as a constant value) that can use it at the same time and the time that each person passes in the bathroom Is random and different to each program execution.
+Design and implement a concurrent solution to the problem. The program should show when a person (man or woman) enters or exits the bathroom; as well as how many people (men or women) are in the bathroom at the moment. Because it is a space of relatively small size, the bathroom has a limiting capacity of persons *C* (provided as input via the command line or prefixed as a constant value) that can use it at the same time and the time that each person passes in the bathroom is random and different to each program execution.
 
 ## Compiling and Running
 
