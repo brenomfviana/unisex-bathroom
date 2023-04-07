@@ -90,4 +90,4 @@ java -jar UnisexBathroomSemaphore.jar
 
 [<img src="https://avatars2.githubusercontent.com/u/17532418?v=3&s=400" width="100"/>](https://github.com/brenov) | [<img src="https://avatars2.githubusercontent.com/u/17392686?v=3&s=400" width="100"/>](https://github.com/Pekorishia)
 ---|---
-[Breno Viana](https://github.com/brenov) | [Patrícia Cruz](https://github.com/Pekorishia)
+[Breno Viana](https://github.com/brenomfviana) | [Patrícia Cruz](https://github.com/Pekorishia)
